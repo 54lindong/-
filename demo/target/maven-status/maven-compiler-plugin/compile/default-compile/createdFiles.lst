@@ -2,6 +2,7 @@ com\caseprocessor\api\QiChaChaApi.class
 com\caseprocessor\data\CompanyDataProcessor.class
 com\caseprocessor\history\HistoryManager.class
 com\caseprocessor\App.class
+com\caseprocessor\textprocessor\CompanyNameExtractor.class
 com\caseprocessor\filehandler\PdfHandler.class
 com\caseprocessor\ui\ResultsPanel.class
 com\caseprocessor\filehandler\FileConverter.class

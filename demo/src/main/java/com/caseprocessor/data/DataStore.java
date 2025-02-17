@@ -1,8 +1,5 @@
 package com.caseprocessor.data;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +9,7 @@ public class DataStore {
     private static final int MAX_COMPANIES = 30;
     private static final String DATA_FILE_PATH = "company_data.json";
 
-    // Mock method to load companies for a given file
+    // 加载公司数据（模拟）
     public static List<String> loadCompanies(File file) {
         List<String> companies = new ArrayList<>();
         companies.add("公司 A");
@@ -21,7 +18,7 @@ public class DataStore {
         return companies;
     }
 
-    // Load history from a JSON file
+    // 加载历史记录
     public static List<String> loadHistory() {
         List<String> history = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(DATA_FILE_PATH))) {
@@ -35,19 +32,13 @@ public class DataStore {
         return history;
     }
 
-    // Save a new company to the file (if there are more than 30 companies, delete the oldest one)
+    // 保存公司数据（最多30个历史记录）
     public static void save(String companyName, String caseData) {
         List<String> companies = loadHistory();
-
         if (companies.size() >= MAX_COMPANIES) {
-            // If there are more than 30 companies, remove the oldest
             companies.remove(0);
         }
-
-        // Add new company data
         companies.add(companyName + ": " + caseData);
-
-        // Save updated list to file
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(DATA_FILE_PATH))) {
             for (String company : companies) {
                 bw.write(company);
@@ -55,14 +46,6 @@ public class DataStore {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    // Remove the JSON file if there are more than 30 companies
-    private static void cleanupDataFile() {
-        File file = new File(DATA_FILE_PATH);
-        if (file.exists()) {
-            file.delete();
         }
     }
 }

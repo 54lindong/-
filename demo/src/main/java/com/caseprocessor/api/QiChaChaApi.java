@@ -8,6 +8,7 @@ public class QiChaChaApi {
     private static final String API_URL = "https://api.qichacha.com/...";  // Example API URL
     private static final String API_KEY = "your_api_key_here";
 
+    // 获取公司信息
     public static String getCompanyInfo(String companyName) throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
